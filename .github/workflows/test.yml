@@ -9,12 +9,14 @@ jobs:
     services:
       mariadb:
         image: mariadb:latest
-        env:
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: yiitest
         ports:
-          - 3306:3306
-        options: --health-cmd 'mysqladmin ping' --health-interval 10s --health-timeout 5s --health-retries 3
+          - 3306
+        env:
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: yiitest
+          MYSQL_ROOT_PASSWORD: root
+        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
 
     strategy:
       matrix:
