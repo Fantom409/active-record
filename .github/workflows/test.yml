@@ -4,7 +4,12 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: PHP ${{ matrix.php-version }}-${{ matrix.os }}
+    env:
+      extensions: apc, curl, mbstring, dom, intl, mysql, pgsql, pdo, pdo_sqlite, imagick
+      key: cache-v1
+
+    runs-on: ${{ matrix.os }}
 
     services:
       mysql:
