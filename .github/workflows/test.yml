@@ -7,16 +7,16 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      mariadb:
-        image: mariadb:latest
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: myUser
+          MYSQL_PASSWORD: myPass
+          MYSQL_DATABASE: myDB
+          MYSQL_ROOT_PASSWORD: myPass
         ports:
           - 3306
-        env:
-          MYSQL_USER: user
-          MYSQL_PASSWORD: password
-          MYSQL_DATABASE: yiitest
-          MYSQL_ROOT_PASSWORD: root
-        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     strategy:
       matrix:
