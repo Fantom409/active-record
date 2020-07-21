@@ -18,10 +18,21 @@ jobs:
           MYSQL_ROOT_PASSWORD: password
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
 
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+
+        php-version:
+          - "7.4"
+          - "8.0"
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Verify MariaDB connection
+        uses: actions/checkout@v1
         env:
           PORT: ${{ job.services.mariadb.ports[3306] }}
         run: |
