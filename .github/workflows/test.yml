@@ -28,7 +28,3 @@ jobs:
           while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
             sleep 1
           done
-
-      - name: Test
-        run: |
-          your tests
