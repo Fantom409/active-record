@@ -34,6 +34,7 @@ jobs:
           mysql database: 'yiitest'
           mysql user: 'user'
           mysql password: 'password'
+          mysql root password: 'password'
 
       - name: Checkout
         uses: actions/checkout@v2
